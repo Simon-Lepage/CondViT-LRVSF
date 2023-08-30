@@ -33,8 +33,8 @@ cd CondViT-LRVSF; pip install -e .
 ```python
 import clip 
 
-torch.save("models/CLIP_B32_visual.pth", clip.load("ViT-B/32")[0].visual.state_dict())
-torch.save("models/CLIP_B16_visual.pth", clip.load("ViT-B/16")[0].visual.state_dict())
+torch.save(clip.load("ViT-B/32")[0].visual.state_dict(), "models/CLIP_B32_visual.pth")
+torch.save(clip.load("ViT-B/16")[0].visual.state_dict(), "models/CLIP_B16_visual.pth")
 ```
 
 ### **Download [LRVS-F](https://huggingface.co/datasets/Slep/LAION-RVS-Fashion)**
