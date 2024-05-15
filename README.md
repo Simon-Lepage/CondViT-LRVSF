@@ -30,15 +30,6 @@ Introduced in ***LRVSF-Fashion: Extending Visual Search with Referring Instructi
 </div>
 </div>
 
-To cite our work, please use the following BibTeX entry : 
-```bibtex
-@article{lepage2023lrvsf,
-  title={LRVS-Fashion: Extending Visual Search with Referring Instructions},
-  author={Lepage, Simon and Mary, Jérémie and Picard, David},
-  journal={arXiv:2306.02928},
-  year={2023}
-}
-```
 
 ---
 
@@ -124,4 +115,16 @@ Use the following commands to train a model and evaluate it. Additional options 
 python main.py --architecture B32 --batch_size 180 --conditioning --run_name CondViTB32
 python lrvsf/test/embedding.py --save_path ./saves/CondViTB32_*/best_validation_model.pth
 python lrvsf/test/metrics.py --embeddings_folder ./saves/CondViTB32_*/embs/
+```
+
+## Citation
+
+To cite our work, please use the following BibTeX entry : 
+```bibtex
+@article{lepage2023lrvsf,
+  title={LRVS-Fashion: Extending Visual Search with Referring Instructions},
+  author={Lepage, Simon and Mary, Jérémie and Picard, David},
+  journal={arXiv:2306.02928},
+  year={2023}
+}
 ```
