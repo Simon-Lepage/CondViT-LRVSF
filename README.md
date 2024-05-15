@@ -1,16 +1,60 @@
-# Weakly-Supervised Conditional Embedding for Referred Visual Search
+<div align="center">
 
-**[CRITEO AI Lab](https://ailab.criteo.com)** $\times$ **[ENPC](https://imagine-lab.enpc.fr)**
+# Conditional ViT Training - LRVS-F
+Introduced in ***LRVSF-Fashion: Extending Visual Search with Referring Instructions***
 
-[Simon Lepage](https://simon-lepage.github.io), Jérémie Mary, [David Picard](https://davidpicard.github.io)
+<a href="https://simon-lepage.github.io"><strong>Simon Lepage</strong></a>
+—
+<strong>Jérémie Mary</strong>
+—
+<a href=https://davidpicard.github.io><strong>David Picard</strong></a>
 
-[[`Paper`](https://arxiv.org/abs/2306.02928)] 
-[[`Demo`](https://huggingface.co/spaces/Slep/CondViT-LRVSF-Demo)] 
-[[`Dataset`](https://huggingface.co/datasets/Slep/LAION-RVS-Fashion)] 
-[[`BibTeX`](#citing-our-work)]
+<a href=https://ailab.criteo.com>CRITEO AI Lab</a>
+&
+<a href=https://imagine-lab.enpc.fr>ENPC</a>
+</div>
+
+<p align="center">
+    <a href="https://arxiv.org/abs/2306.02928">
+        <img alt="ArXiV Badge" src="https://img.shields.io/badge/arXiv-2306.02928-b31b1b.svg">
+    </a>
+</p>
+
+<div align="center">
+<style>
+    #links table {
+        border-collapse: separate;
+        border-spacing: 0;
+        border: solid #fd7e14 3px;
+        border-radius: 15px;
+        padding: .5em;
+    }
+    #links a {
+        font-weight: bold
+    }
+</style>
+<div id=links>
+
+|Data|Code|Models|Spaces|
+|:-:|:-:|:-:|:-:|
+|[Full Dataset](https://huggingface.co/datasets/Slep/LAION-RVS-Fashion)|[Training Code](https://github.com/Simon-Lepage/CondViT-LRVSF)|[Categorical Model](https://huggingface.co/Slep/CondViT-B16-cat)|[LRVS-F Leaderboard](https://huggingface.co/spaces/Slep/LRVSF-Leaderboard)|
+|[Test set](https://zenodo.org/doi/10.5281/zenodo.11189942)|[Benchmark Code](https://github.com/Simon-Lepage/LRVSF-Benchmark)|[Textual Model](https://huggingface.co/Slep/CondViT-B16-txt)|[Demo](https://huggingface.co/spaces/Slep/CondViT-LRVSF-Demo)|
+</div>
+</div>
+
+To cite our work, please use the following BibTeX entry : 
+```bibtex
+@article{lepage2023lrvsf,
+  title={LRVS-Fashion: Extending Visual Search with Referring Instructions},
+  author={Lepage, Simon and Mary, Jérémie and Picard, David},
+  journal={arXiv:2306.02928},
+  year={2023}
+}
+```
 
 ---
 
+## Overview
 ![Method](./assets/method.png?raw=true)
 
 **CondViT** computes conditional image embeddings, to extract specific features out of complex images. This codebase shows how to train it on [LAION — Referred Visual Search — Fashion](https://huggingface.co/datasets/Slep/LAION-RVS-Fashion), with clothing categories. It can easily be modified to use free text embeddings as conditioning, such as BLIP2 captions provided in the dataset.
@@ -84,7 +128,7 @@ torch.save(clip.load("ViT-B/16")[0].visual.state_dict(), "models/CLIP_B16_visual
     </details>
 - **Test** data should be stored as `TEST/dist_{i}.parquet` and `TEST/prods.parquet` files. Their index should be `url`, and have a single `jpg` column containing the images as bytes.
 
-### **Run the training**
+### **Train the model**
 
 Use the following commands to train a model and evaluate it. Additional options can be found in the scripts. Training a ViT-B/32 on 2 Nvidia V100 GPUs should take ~6h.
 
@@ -92,18 +136,4 @@ Use the following commands to train a model and evaluate it. Additional options 
 python main.py --architecture B32 --batch_size 180 --conditioning --run_name CondViTB32
 python lrvsf/test/embedding.py --save_path ./saves/CondViTB32_*/best_validation_model.pth
 python lrvsf/test/metrics.py --embeddings_folder ./saves/CondViTB32_*/embs/
-```
-
----
-
-## Citing our work
-
-To cite our work, please use the following BibTeX entry : 
-```
-@article{lepage2023condvit,
-  title={Weakly-Supervised Conditional Embedding for Referred Visual Search},
-  author={Lepage, Simon and Mary, Jérémie and Picard, David},
-  journal={arXiv:2306.02928},
-  year={2023}
-}
 ```
