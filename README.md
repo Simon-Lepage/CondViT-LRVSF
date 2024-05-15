@@ -21,18 +21,6 @@ Introduced in ***LRVSF-Fashion: Extending Visual Search with Referring Instructi
 </p>
 
 <div align="center">
-<style>
-    #links table {
-        border-collapse: separate;
-        border-spacing: 0;
-        border: solid #fd7e14 3px;
-        border-radius: 15px;
-        padding: .5em;
-    }
-    #links a {
-        font-weight: bold
-    }
-</style>
 <div id=links>
 
 |Data|Code|Models|Spaces|
