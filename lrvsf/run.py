@@ -107,7 +107,7 @@ def run_fn(rank, world_size, model, datasets, args):
         except StopIteration:
             continue
 
-        if rank == 0:
+        if rank == 0 and epoch % args["save_freq"] == 0:
             metrics = loops.valid(
                 model, validloader, distloader, tb_writer, epoch, device
             )
